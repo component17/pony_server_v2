@@ -22,7 +22,7 @@ Object.keys(ifaces).forEach(function (ifname) {
             // this interface has only one ipv4 adress
             console.log(ifname, iface.address);
 
-            if(ifname === 'en1'){
+            if(ifname === 'eth0'){
                 ip = iface.address
             }
         }
