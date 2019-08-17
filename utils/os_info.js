@@ -45,7 +45,7 @@ let getInfo = () => {
                 ip: getIP(),
                 start_time,
                 temp: pi.getThrm(),
-                volt: pi.getVcc(),
+                volt: pi.getVcc() / 1000,
                 uptime_os: pi.uptime()
             };
             resolve(res);
