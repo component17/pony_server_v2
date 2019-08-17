@@ -42,7 +42,7 @@ let getInfo = () => {
                 res = {
                     cpu: (v * 100).toFixed(),
                     ram: ((os_utils.totalmem() - os_utils.freemem()) / os_utils.totalmem() * 100).toFixed(),
-                    ip: getIP(),
+                    ip: '192.168.1.77',
                     start_time,
                     temp: '47.77',
                     volt: '4.925',
@@ -85,3 +85,5 @@ let run = async () => {
 };
 
 run();
+
+module.exports = getInfo;
