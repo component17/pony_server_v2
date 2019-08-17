@@ -2,7 +2,7 @@ let os_utils = require('os-utils');
 let pi = require('node-raspi');
 let os = require('os');
 
-
+let pjson = require('../package.json');
 
 let start_time = new Date();
 
@@ -46,7 +46,8 @@ let getInfo = () => {
                 start_time,
                 temp: pi.getThrm(),
                 volt: pi.getVcc() / 1000,
-                uptime_os: pi.uptime()
+                uptime_os: pi.uptime(),
+                version: pjson.version
             };
             resolve(res);
         });
