@@ -22,10 +22,8 @@ let getIP = () => {
 
             if (alias >= 1) {
                 // this single interface has multiple ipv4 addresses
-                console.log(ifname + ':' + alias, iface.address);
             } else {
                 // this interface has only one ipv4 adress
-                console.log(ifname, iface.address);
 
                 if(ifname === 'eth0'){
                     ip = iface.address
@@ -48,10 +46,12 @@ let getInfo = () => {
                     ram: ((os_utils.totalmem() - os_utils.freemem()) / os_utils.totalmem() * 100).toFixed(),
                     ip: getIP(),
                     start_time,
-                    temp: '47.774',
+                    temp: '47.77',
                     volt: '4.925',
                     uptime_os: 782300,
-                    version: pjson.version
+                    version: pjson.version,
+                    sections: store.sections.length,
+                    modules: store.modules.length
                 };
             }else{
                 res = {
@@ -59,10 +59,12 @@ let getInfo = () => {
                     ram: ((os_utils.totalmem() - os_utils.freemem()) / os_utils.totalmem() * 100).toFixed(),
                     ip: getIP(),
                     start_time,
-                    temp: pi.getThrm(),
+                    temp: pi.getThrm().toFixed(2),
                     volt: pi.getVcc() / 1000,
                     uptime_os: pi.uptime(),
-                    version: pjson.version
+                    version: pjson.version,
+                    sections: store.sections.length,
+                    modules: store.modules.length
                 };
             }
 
@@ -74,7 +76,6 @@ let getInfo = () => {
 let run = async () => {
     try {
         let res = await getInfo();
-        console.log(res);
         io.sockets.emit('info:os', res);
 
         setTimeout(() => {
