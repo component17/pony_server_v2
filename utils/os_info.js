@@ -8,7 +8,7 @@ let start_time = new Date();
 
 let getIP = () => {
     let ifaces = os.networkInterfaces();
-    let ip = '';
+    let ip = null;
     Object.keys(ifaces).forEach(function (ifname) {
         var alias = 0;
 
