@@ -625,7 +625,7 @@ nan@2.13.2:
   version "2.13.2"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.13.2.tgz#f51dc7ae66ba7d5d55e1e6d4d8092e802c9aefe7"
 
-nan@^2.10.0:
+nan@^2.0.9, nan@^2.10.0:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
 
@@ -646,6 +646,12 @@ node-abi@^2.7.0:
   resolved "https://registry.yarnpkg.com/node-abi/-/node-abi-2.11.0.tgz#b7dce18815057544a049be5ae75cd1fdc2e9ea59"
   dependencies:
     semver "^5.4.1"
+
+node-raspi@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/node-raspi/-/node-raspi-1.0.1.tgz#f929293fe5b0bdaaa2f522a0950ce23a179f1af1"
+  dependencies:
+    sync-runner "*"
 
 noop-logger@^0.1.1:
   version "0.1.1"
@@ -965,6 +971,12 @@ strip-ansi@^4.0.0:
 strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
+
+sync-runner@*:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/sync-runner/-/sync-runner-0.1.9.tgz#f2b141cda79341bd8b5e5d20d5629ff0dcf03cb3"
+  dependencies:
+    nan "^2.0.9"
 
 tar-fs@^1.13.0:
   version "1.16.3"
