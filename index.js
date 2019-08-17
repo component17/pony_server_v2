@@ -61,6 +61,16 @@ app.use('/api/v1/turn', turn);
 app.use('/api/v1/sensor', sensor);
 app.use('/api/v1/status', status);
 
+const usb = require('usb');
+const drivelist = require('drivelist');
 
+usb.on('attach', async (device) => {
+    const drives = await drivelist.list();
+    console.log(drives);
+});
+
+usb.on('detach', function (device) {
+    console.log(device)
+});
 
 
