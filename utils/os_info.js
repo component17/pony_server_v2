@@ -2,8 +2,6 @@ let os_utils = require('os-utils');
 let pi = require('node-raspi');
 let os = require('os');
 
-console.log(os.platform())
-
 let pjson = require('../package.json');
 
 let start_time = new Date();
@@ -55,7 +53,7 @@ let getInfo = () => {
                 };
             }else{
                 res = {
-                    cpu: (v * 100).toFixed(),
+                    cpu: (v * 100).toFixed(2),
                     ram: ((os_utils.totalmem() - os_utils.freemem()) / os_utils.totalmem() * 100).toFixed(),
                     ip: getIP(),
                     start_time,
