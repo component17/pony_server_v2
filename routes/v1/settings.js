@@ -7,6 +7,11 @@ router.get('/', (req, res) => {
     res.status(200).json(settings);
 });
 
+router.get('/reboot', (req, res) => {
+    require('child_process').exec('sudo reboot', (msg) => { console.log(msg) });
+    res.status(200).json('ok');
+});
+
 router.post('/base-color', (req, res) => {
     console.log(req.body.color)
     if(!req.body.color || !req.body.color.r >=255 || !req.body.color.g >=255 || !req.body.color.b >=255) return res.status(403).json({message: 'Поле "Цвет" невалидно!'});

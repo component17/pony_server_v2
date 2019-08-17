@@ -2,6 +2,8 @@ let os_utils = require('os-utils');
 let pi = require('node-raspi');
 let os = require('os');
 
+console.log(os.platform())
+
 let pjson = require('../package.json');
 
 let start_time = new Date();
@@ -39,16 +41,31 @@ let getIP = () => {
 let getInfo = () => {
     return new Promise((resolve, reject) => {
         os_utils.cpuUsage((v) => {
-            res = {
-                cpu: (v * 100).toFixed(),
-                ram: ((os_utils.totalmem() - os_utils.freemem()) / os_utils.totalmem() * 100).toFixed(),
-                ip: getIP(),
-                start_time,
-                temp: pi.getThrm(),
-                volt: pi.getVcc() / 1000,
-                uptime_os: pi.uptime(),
-                version: pjson.version
-            };
+            let res = null;
+            if(os.platform() === 'darwin'){
+                res = {
+                    cpu: (v * 100).toFixed(),
+                    ram: ((os_utils.totalmem() - os_utils.freemem()) / os_utils.totalmem() * 100).toFixed(),
+                    ip: getIP(),
+                    start_time,
+                    temp: '47.774',
+                    volt: '4.925',
+                    uptime_os: 782300,
+                    version: pjson.version
+                };
+            }else{
+                res = {
+                    cpu: (v * 100).toFixed(),
+                    ram: ((os_utils.totalmem() - os_utils.freemem()) / os_utils.totalmem() * 100).toFixed(),
+                    ip: getIP(),
+                    start_time,
+                    temp: pi.getThrm(),
+                    volt: pi.getVcc() / 1000,
+                    uptime_os: pi.uptime(),
+                    version: pjson.version
+                };
+            }
+
             resolve(res);
         });
     })
