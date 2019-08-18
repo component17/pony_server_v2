@@ -49,9 +49,7 @@ let getInfo = () => {
                     temp: '47.77',
                     volt: '4.925',
                     uptime_os: 782300,
-                    version: pjson.version,
-                    sections: store.sections.length,
-                    modules: store.modules.length
+                    version: pjson.version
                 };
             }else{
                 res = {
@@ -62,9 +60,7 @@ let getInfo = () => {
                     temp: pi.getThrm().toFixed(2),
                     volt: pi.getVcc() / 1000,
                     uptime_os: pi.uptime(),
-                    version: pjson.version,
-                    sections: store.sections.length,
-                    modules: store.modules.length
+                    version: pjson.version
                 };
             }
 
