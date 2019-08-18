@@ -74,7 +74,8 @@ let getInfo = () => {
 let run = async () => {
     try {
         let res = await getInfo();
-        io.sockets.emit('info:os', res);
+
+        process.send(res);
 
         setTimeout(() => {
             run();
@@ -85,5 +86,3 @@ let run = async () => {
 };
 
 run();
-
-module.exports = getInfo;

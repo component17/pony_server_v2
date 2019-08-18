@@ -51,7 +51,30 @@ app.use(bodyParser.json());
 app.use('/api', http_log);
 
 require('./utils/socket');
-require('./utils/os_info');
+
+global.os_info = {
+    cpu: 0,
+    ram: 0,
+    ip: null,
+    start_time: new Date(),
+    temp: '0',
+    volt: '0',
+    uptime_os: 0,
+    version: 0,
+    sections: 0,
+    modules: 0
+};
+
+const child_process = require('child_process');
+
+const forkedChild = child_process.fork('./utils/os_info', ['build']);
+
+forkedChild.on('message', (message) => {
+    os_info = message;
+    io.sockets.emit('info:os', message);
+});
+
+// require('./utils/os_info');
 
 const {sections, modules, settings, turn, sensor, status} = require('./routes/v1/index');
 app.use('/api/v1/sections', sections);
