@@ -69,7 +69,7 @@ global.os_info = {
 
 const child_process = require('child_process');
 
-const forkedChild = child_process.fork('.pony_server_v2/utils/os_info', ['build']);
+const forkedChild = child_process.fork('pony_server_v2/utils/os_info', ['build']);
 
 forkedChild.on('message', (message) => {
     os_info = message;
