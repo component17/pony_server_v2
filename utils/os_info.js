@@ -2,6 +2,8 @@ let os_utils = require('os-utils');
 let pi = require('node-raspi');
 let os = require('os');
 
+console.log(555)
+
 let pjson = require('../package.json');
 
 let start_time = new Date();

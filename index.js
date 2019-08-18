@@ -74,6 +74,8 @@ forkedChild.on('message', (message) => {
     io.sockets.emit('info:os', message);
 });
 
+console.log(forkedChild);
+
 // require('./utils/os_info');
 
 const {sections, modules, settings, turn, sensor, status} = require('./routes/v1/index');
