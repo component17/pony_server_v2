@@ -71,10 +71,10 @@ const forkedChild = child_process.fork('./utils/os_info', ['build']);
 
 forkedChild.on('message', (message) => {
     os_info = message;
-    io.sockets.emit('info:os', message);
+    os_info.sections = store.sections.length;
+    os_info.modules = store.modules.length;
+    io.sockets.emit('info:os', os_info);
 });
-
-console.log(forkedChild);
 
 // require('./utils/os_info');
 
